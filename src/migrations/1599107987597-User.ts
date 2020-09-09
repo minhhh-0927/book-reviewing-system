@@ -19,7 +19,7 @@ export class User1599107987597 implements MigrationInterface {
 
         await queryRunner.query(`
             alter table "user"
-            owner to "ha.hao.minh";
+            owner to "postgres";
         `);
 
         await queryRunner.query(`
