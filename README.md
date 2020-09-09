@@ -1,4 +1,4 @@
-# NestJS + TypeORM Example
+# Book Reviewing System
 
 ## Installation
 
@@ -6,11 +6,7 @@
 $ yarn install
 ```
 
-## Create migration file
-
-```shell script
-yarn typeorm migration:create -n PostRefactoringrun -d src/migrations
-```
+## Migration file
 
 Migrate
 

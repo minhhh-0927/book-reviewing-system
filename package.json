@@ -1,7 +1,7 @@
 {
-  "name": "member-management-system",
+  "name": "book-reviewing-system",
   "version": "0.0.0",
-  "description": "Member Management System",
+  "description": "Sun has many technical books that all employees can read. To manage and use them effectively, the management and reviewing system is needed.",
   "author": "Sun* Team",
   "license": "MIT",
   "scripts": {
