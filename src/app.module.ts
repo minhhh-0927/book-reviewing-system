@@ -6,7 +6,7 @@ import { BooksModule } from './components/book/books.module';
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot(),
+        TypeOrmModule.forRoot({}),
         UserModule,
         BooksModule,
     ],
