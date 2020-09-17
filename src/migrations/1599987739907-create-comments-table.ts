@@ -28,13 +28,13 @@ export class createCommentsTable1599987739907 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     },
                     {
                         name: 'updated_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     }
@@ -44,6 +44,7 @@ export class createCommentsTable1599987739907 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
+        await queryRunner.dropTable('comments')
     }
 
 }

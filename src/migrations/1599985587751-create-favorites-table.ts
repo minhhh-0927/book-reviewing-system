@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class createFavoritesTable1599985587751 implements MigrationInterface {
 
@@ -24,13 +24,13 @@ export class createFavoritesTable1599985587751 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     },
                     {
                         name: 'updated_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     }

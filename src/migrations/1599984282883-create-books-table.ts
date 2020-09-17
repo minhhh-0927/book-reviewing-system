@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class createBooksTable1599984282883 implements MigrationInterface {
 
@@ -48,13 +48,13 @@ export class createBooksTable1599984282883 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     },
                     {
                         name: 'updated_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     }
@@ -64,7 +64,7 @@ export class createBooksTable1599984282883 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
-        await  queryRunner.dropTable('books')
+        await queryRunner.dropTable('books')
     }
 
 }

@@ -28,13 +28,13 @@ export class createReadStatusTable1599988127462 implements MigrationInterface {
                     },
                     {
                         name: 'created_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     },
                     {
                         name: 'updated_at',
-                        type: 'datetime',
+                        type: 'timestamp',
                         default: 'now()',
                         isNullable: true
                     }
