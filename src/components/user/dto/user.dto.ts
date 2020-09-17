@@ -13,10 +13,4 @@ export class UserDto {
   public email: string;
 
   public password: string;
-
-  @Expose()
-  public firstName: string;
-
-  @Expose()
-  public lastName: string;
 }

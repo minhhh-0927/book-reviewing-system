@@ -11,10 +11,4 @@ export class RetrieveUserDto {
 
   @Expose()
   public email: string;
-
-  @Expose()
-  public firstName: string;
-
-  @Expose()
-  public lastName: string;
 }
