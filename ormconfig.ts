@@ -1,7 +1,7 @@
 export = {
   name: "default",
   host: process.env.DATABASE_HOST,
-  type: "postgres",
+  type: "mysql",
   port: process.env.DATABASE_PORT,
   username: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,

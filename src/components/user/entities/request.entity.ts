@@ -1,28 +1,43 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 
-import UserEntity from './user.entity';
+import { User } from "./user.entity";
 
-@Entity()
-export default class Request {
+@Entity({ name: "request" })
+export class Request extends BaseEntity {
+  @PrimaryGeneratedColumn()
+  public id: number;
 
-    @PrimaryGeneratedColumn()
-    public id: number;
+  @Column()
+  public content: string;
 
-    @Column()
-    public content: string;
+  @Column()
+  public status: number;
 
-    @Column()
-    public status: number;
+  @Column()
+  public user_id: number;
 
-    @Column()
-    public user_id: number;
+  @CreateDateColumn({
+    default: "now()",
+    nullable: true,
+  })
+  public created_at: string;
 
-    @CreateDateColumn({ type: 'timestamp' })
-    public created_at: Date;
+  @UpdateDateColumn({
+    default: "now()",
+    nullable: true,
+  })
+  public updated_at: string;
 
-    @UpdateDateColumn({ type: 'timestamp' })
-    public updated_at: Date;
-
-    @ManyToOne(type => UserEntity, user => user.requests)
-    user: UserEntity;
+  @ManyToOne((type) => User, (user) => user.requests)
+  user: User;
 }
