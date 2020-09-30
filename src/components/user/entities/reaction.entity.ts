@@ -4,7 +4,7 @@ import UserEntity from './user.entity';
 import ActivityLogEntity from './activity_logs.entity';
 
 @Entity()
-export default class ActivityLog {
+export default class Reaction {
 
     @PrimaryGeneratedColumn()
     public id: number;

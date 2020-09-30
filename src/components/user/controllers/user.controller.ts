@@ -1,9 +1,9 @@
 import {Body, Controller, Get, Inject, Post, Res} from '@nestjs/common';
 
 import {Response} from 'express';
-import {USER_SERVICE} from './constants';
-import {IUserService} from './contracts';
-import {RegisterUserDto, RetrieveUserDto, UserDto} from './dto';
+import {USER_SERVICE} from '../constants';
+import {IUserService} from '../contracts';
+import {RegisterUserDto, RetrieveUserDto, UserDto} from '../dto';
 
 @Controller('users')
 export class UserController {

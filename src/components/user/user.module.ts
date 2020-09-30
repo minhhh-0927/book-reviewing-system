@@ -4,9 +4,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from '../auth';
 import { USER_REPOSITORY, USER_SERVICE } from './constants';
-import { User } from './entities';
+import User from './entities/user.entity';
 import { UserRepository } from './repositories';
-import { UserController } from './user.controller';
+import { UserController } from './controllers/user.controller';
 import { UserService } from './user.service';
 
 const userRepositoryProvider: ClassProvider = {

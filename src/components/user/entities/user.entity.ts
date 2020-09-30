@@ -10,7 +10,7 @@ import ReactionEntity from './reaction.entity';
 import RequestEntity from './request.entity';
 
 @Entity({ name: 'user' })
-export class User {
+export default class User {
 
     @PrimaryColumn()
     public id: number;

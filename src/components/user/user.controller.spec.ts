@@ -4,7 +4,7 @@ import { Test } from '@nestjs/testing';
 import { USER_SERVICE } from './constants';
 import { IUserService } from './contracts';
 import { RegisterUserDto, UserDto } from './dto';
-import { UserController } from './user.controller';
+import { UserController } from './controllers/user.controller';
 
 describe('User Controller', () => {
   let userController: UserController;
