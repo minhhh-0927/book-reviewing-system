@@ -17,7 +17,7 @@ import { Reviews } from "../../book/entities/revirew.entity";
 import ReactionEntity from "./reaction.entity";
 import { Request } from "./request.entity";
 
-@Entity({ name: "user" })
+@Entity({ name: "users" })
 export class User extends BaseEntity {
   @PrimaryColumn()
   public id: number;
@@ -42,6 +42,9 @@ export class User extends BaseEntity {
 
   @Column()
   public lastName: string;
+
+  @Column()
+  public salt: string;
 
   @CreateDateColumn({ type: "timestamp" })
   public created_at: Date;

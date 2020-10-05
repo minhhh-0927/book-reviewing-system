@@ -6,6 +6,8 @@ import { BooksModule } from "./components/book/books.module";
 import { ConfigModule } from "@nestjs/config";
 import databaseConfig from "./config/database.config";
 import appConfig from "./config/app";
+import { User } from "./components/user/entities";
+
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import appConfig from "./config/app";
       username: databaseConfig().databaseUsername,
       password: databaseConfig().databasePassword,
       database: databaseConfig().databaseName,
-      entities: [],
+      entities: [User],
     }),
     UserModule,
     BooksModule,

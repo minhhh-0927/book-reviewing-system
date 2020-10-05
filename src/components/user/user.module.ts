@@ -21,14 +21,11 @@ const userServiceProvider: ClassProvider = {
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([UserRepository]),
     AuthModule,
   ],
   controllers: [UserController],
-  providers: [
-    userRepositoryProvider,
-    userServiceProvider,
-  ],
-  exports: [userServiceProvider],
+  providers: [UserService],
+  // exports: [userServiceProvider],
 })
 export class UserModule {}
