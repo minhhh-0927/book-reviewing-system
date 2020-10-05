@@ -1,23 +1,36 @@
-import {Body, Controller, Get, Inject, Post, Res, ValidationPipe} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Inject,
+  Post,
+  Res,
+  ValidationPipe,
+} from "@nestjs/common";
 
-import {Response} from 'express';
-import {USER_SERVICE} from './constants';
-import {IUserService} from './contracts';
-import {RegisterUserDto, RetrieveUserDto, UserDto} from './dto';
-import {AuthCredentialsDto} from './dto/auth-credentials.dto'
-import { UserService } from './user.service';
+import { Response } from "express";
+import { USER_SERVICE } from "./constants";
+import { IUserService } from "./contracts";
+import { RegisterUserDto, RetrieveUserDto, UserDto } from "./dto";
+import { AuthCredentialsDto } from "./dto/auth-credentials.dto";
+import { UserService } from "./user.service";
 
-@Controller('users')
+@Controller("users")
 export class UserController {
+  constructor(private userServive: UserService) {}
 
-  constructor(
-    private userServive: UserService,
-  ) {}
-
-  @Post('/signup')
-  public async signUp(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<void> {
+  @Post("/signup")
+  public async signUp(
+    @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto
+  ): Promise<void> {
     return this.userServive.signUp(authCredentialsDto);
   }
+
+  @Post('/signin')
+  async signIn(@Body(ValidationPipe) AuthCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
+    return this.userServive.signIn(AuthCredentialsDto);
+  }
+
 
   // @Get()
   // public async getUsers(): Promise<Array<RetrieveUserDto>> {

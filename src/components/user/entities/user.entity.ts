@@ -16,6 +16,7 @@ import { ReadStatus } from "../../book/entities/read_status.entity";
 import { Reviews } from "../../book/entities/revirew.entity";
 import ReactionEntity from "./reaction.entity";
 import { Request } from "./request.entity";
+import * as bcrypt from 'bcrypt';
 
 @Entity({ name: "users" })
 export class User extends BaseEntity {
@@ -75,4 +76,10 @@ export class User extends BaseEntity {
 
   @OneToMany((type) => Reviews, (review) => review.user_id)
   review: Reviews[];
+
+  async validatePassword(password: string): Promise<boolean> {
+    const hash = await bcrypt.hash(password, this.salt);
+    
+    return hash === this.password;
+  }
 }

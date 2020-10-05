@@ -34,6 +34,6 @@ export default class ActivityLog {
   @UpdateDateColumn({ type: "timestamp" })
   public updated_at: Date;
 
-  @OneToMany((type) => ReactionEntity, (reaction) => reaction.activity_log)
-  reactions: ReactionEntity;
+  // @OneToMany((type) => ReactionEntity, (reaction) => reaction.activity_log)
+  // reactions: ReactionEntity;
 }

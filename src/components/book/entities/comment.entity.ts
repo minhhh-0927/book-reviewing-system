@@ -5,35 +5,35 @@ import {
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from 'typeorm'
-import { User } from '../../user/entities'
-import {BookCategory} from './book_category.entity'
-import {Book} from './book.entity'
+  UpdateDateColumn,
+} from "typeorm";
+import { User } from "../../user/entities";
+import { BookCategory } from "./book_category.entity";
+import { Book } from "./book.entity";
 
-@Entity({ name: 'categories' })
+@Entity({ name: "categories" })
 export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  content: string
+  content: string;
 
   @CreateDateColumn({
-    default: 'now()',
+    default: "now()",
     nullable: true,
   })
-  created_at: string
+  created_at: string;
 
   @UpdateDateColumn({
-    default: 'now()',
+    default: "now()",
     nullable: true,
   })
-  updated_at: string
+  updated_at: string;
 
   @ManyToOne(type => User, user => user.comment)
   user_id: User
 
-  @ManyToOne(type => Book, book => book.comment)
-  book_id: Book
+  @ManyToOne((type) => Book, (book) => book.comment)
+  book_id: Book;
 }

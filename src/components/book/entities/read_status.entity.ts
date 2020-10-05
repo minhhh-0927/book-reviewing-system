@@ -6,33 +6,33 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   ManyToOne,
-  OneToMany
-} from 'typeorm'
-import {Book} from './book.entity'
-import {Category} from './category.entity'
-import {User} from '../../user/entities'
+  OneToMany,
+} from "typeorm";
+import { Book } from "./book.entity";
+import { Category } from "./category.entity";
+import { User } from "../../user/entities";
 
-@Entity({ name: 'read_status' })
+@Entity({ name: "read_status" })
 export class ReadStatus extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  status: number
+  status: number;
 
   @CreateDateColumn({
-    default: 'now()',
+    default: "now()",
     nullable: true,
   })
-  created_at: string
+  created_at: string;
 
   @UpdateDateColumn({
-    default: 'now()',
+    default: "now()",
     nullable: true,
   })
-  updated_at: string
+  updated_at: string;
 
-  @ManyToOne(type => Book, book => book.read_status)
+  @ManyToOne((type) => Book, (book) => book.read_status)
   book_id: Book;
 
   @ManyToOne(type => User, user => user.read_status)

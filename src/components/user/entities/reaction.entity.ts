@@ -38,9 +38,9 @@ export default class ActivityLog {
   @ManyToOne((type) => User, (user) => user.reactions)
   user: User;
 
-  @ManyToOne(
-    (type) => ActivityLogEntity,
-    (activity_log) => activity_log.reactions
-  )
-  activity_log: ActivityLogEntity;
+  // @ManyToOne(
+  //   (type) => ActivityLogEntity,
+  //   (activity_log) => activity_log.reactions
+  // )
+  // activity_log: ActivityLogEntity;
 }
