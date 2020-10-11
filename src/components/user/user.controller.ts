@@ -4,9 +4,9 @@ import {
   Get,
   Inject,
   Post,
-  Res,
   ValidationPipe,
 } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
 
 import { Response } from "express";
 import { USER_SERVICE } from "./constants";
@@ -19,18 +19,15 @@ import { UserService } from "./user.service";
 export class UserController {
   constructor(private userServive: UserService) {}
 
-  @Post("/signup")
-  public async signUp(
-    @Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto
-  ): Promise<void> {
+  @Post("/signUp")
+  async signUp(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<void> {
     return this.userServive.signUp(authCredentialsDto);
   }
 
-  @Post('/signin')
-  async signIn(@Body(ValidationPipe) AuthCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
-    return this.userServive.signIn(AuthCredentialsDto);
+  @Post("/signIn")
+  async signIn(@Body(ValidationPipe) authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }> {
+    return this.userServive.signIn(authCredentialsDto);
   }
-
 
   // @Get()
   // public async getUsers(): Promise<Array<RetrieveUserDto>> {

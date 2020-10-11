@@ -16,42 +16,39 @@ import { ReadStatus } from "../../book/entities/read_status.entity";
 import { Reviews } from "../../book/entities/revirew.entity";
 import ReactionEntity from "./reaction.entity";
 import { Request } from "./request.entity";
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from "bcrypt";
 
 @Entity({ name: "users" })
 export class User extends BaseEntity {
   @PrimaryColumn()
   public id: number;
 
-  @Column({
-    unique: true,
-  })
+  @Column({unique: true})
   public username: string;
 
-  @Column({
-    unique: true,
-  })
+  @Column()
   public email: string;
 
-  @Column({
-    select: false,
-  })
+  @Column()
   public password: string;
 
   @Column()
   public role: number;
 
   @Column()
-  public lastName: string;
-
-  @Column()
   public salt: string;
 
-  @CreateDateColumn({ type: "timestamp" })
-  public created_at: Date;
+  @CreateDateColumn({
+    default: `now()`,
+    nullable: true,
+  })
+  public created_at: string;
 
-  @UpdateDateColumn({ type: "timestamp" })
-  public updated_at: Date;
+  @UpdateDateColumn({
+    default: `now()`,
+    nullable: true,
+  })
+  public updated_at: string;
 
   @OneToMany((type) => Request, (request) => request.user)
   requests: Request;
@@ -79,7 +76,7 @@ export class User extends BaseEntity {
 
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcrypt.hash(password, this.salt);
-    
+
     return hash === this.password;
   }
 }
