@@ -2,6 +2,7 @@ import { EntityRepository, Repository } from "typeorm";
 import { Book } from "./entities/book.entity";
 import { getBooksFilterDto } from "./dto/get-books-filter.dto";
 import { CreateBookDto } from "./dto/create-book.dto";
+import {User} from '../user/entities'
 
 @EntityRepository(Book)
 export class BookRepository extends Repository<Book> {
@@ -23,7 +24,10 @@ export class BookRepository extends Repository<Book> {
     return await query.getMany();
   }
 
-  async createTask(createBookDto: CreateBookDto): Promise<Book> {
+  async createBook(
+    createBookDto: CreateBookDto,
+    user: User,
+  ): Promise<Book> {
     const {
       title,
       description,
@@ -40,6 +44,7 @@ export class BookRepository extends Repository<Book> {
     book.author = author;
     book.number_page = number_page;
     book.price = price;
+    book.user_id = user;
     await this.save(book, {
       reload: false,
     });

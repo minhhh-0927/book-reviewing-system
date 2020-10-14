@@ -1,6 +1,7 @@
 import { NestExpressApplication } from "@nestjs/platform-express";
 import * as nunjucks from "nunjucks";
 import path, { join } from "path";
+import appConfig from "./config/app";
 global.ROOT_DIR = path.join(__dirname, "..");
 
 import { ValidationPipe } from "@nestjs/common";
@@ -27,6 +28,10 @@ async function bootstrap(): Promise<void> {
       express: app,
     }
   );
+
+  const config_template = appConfig().frontend.static_url
+  environment.addGlobal("STATIC_URL", config_template);
+
   app.engine("njk", environment.render);
   app.setViewEngine("njk");
   app.set("view cache", true);

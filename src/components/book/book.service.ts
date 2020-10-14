@@ -4,6 +4,8 @@ import {InjectRepository} from '@nestjs/typeorm'
 import {BookRepository} from './book.repository'
 import {getBooksFilterDto} from './dto/get-books-filter.dto'
 import {Book} from './entities/book.entity'
+import {User} from '../user/entities'
+import {use} from 'nconf'
 
 @Injectable()
 export class BookService {
@@ -25,7 +27,10 @@ export class BookService {
     return book;
   }
 
-  async createBook(createBookDto: CreateBookDto): Promise<Book> {
-    return this.bookRepository.createTask(createBookDto);
+  async createBook(
+    createBookDto: CreateBookDto,
+    user: User,
+  ): Promise<Book> {
+    return this.bookRepository.createBook(createBookDto, user);
   }
 }

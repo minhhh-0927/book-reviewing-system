@@ -4,6 +4,7 @@ import {
   Get,
   Inject,
   Post,
+  Res,
   ValidationPipe,
 } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
@@ -34,10 +35,10 @@ export class UserController {
   //     return await this.userServive.getUsers();
   // }
 
-  // @Get('/index')
-  // // tslint:disable-next-line:typedef no-any
-  //  public async index(@Res() res: Response): Promise<any> {
-  //     const data = await this.userServive.getUsers();
-  //     return res.render('index.njk', {username: data[0].username});
-  // }
+  @Get('/index')
+  // tslint:disable-next-line:typedef no-any
+   public async index(@Res() res: Response): Promise<any> {
+      // const data = await this.userServive.getUsers();
+      return res.render('auth/dashboard.njk');
+  }
 }

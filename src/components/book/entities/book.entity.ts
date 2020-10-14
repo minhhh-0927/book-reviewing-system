@@ -53,7 +53,7 @@ export class Book extends BaseEntity {
   })
   updated_at: string;
 
-  @ManyToOne((type) => User, (user) => user.book)
+  @ManyToOne((type) => User, user => user.book, { eager: false })
   user_id: User;
 
   @OneToMany((type) => Favorite, (favorite) => favorite.book_id)

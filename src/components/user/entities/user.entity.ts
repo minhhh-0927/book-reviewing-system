@@ -56,7 +56,7 @@ export class User extends BaseEntity {
   @OneToMany((type) => ReactionEntity, (reaction) => reaction.user)
   reactions: ReactionEntity;
 
-  @OneToMany((type) => Book, (book) => book.user_id)
+  @OneToMany((type) => Book, (book) => book.user_id, { eager: true })
   book: Book[];
 
   @OneToMany((type) => Category, (category) => category.user_id)
